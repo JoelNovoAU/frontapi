@@ -6,30 +6,30 @@ $(document).ready(function () {
     });
 
     // Mostrar el primer usuario
-   $('.mostrarPrimero').on('click', function () {
+  $('.mostrarPrimero').on('click', function () {
     $.ajax({
-        url: 'https://lanzarapi3.vercel.app/api/usuarios1/',
+        url: 'https://lanzarapi3.vercel.app/api/usuarios1/', // URL del endpoint
         method: 'GET',
-        success: function (usuarios) {
-            console.log('Respuesta del servidor:', usuarios); // Log para inspección
-            if (usuarios.length > 0) {
-                const usuario = usuarios[0]; // Obtiene el primer usuario
+        success: function (usuario) {
+            console.log('Respuesta del servidor:', usuario); // Verifica qué devuelve el servidor
+            if (usuario && typeof usuario === 'object') {
                 $('.usuarios').html(`
                     <div class="carta">
                         <h3>ID: ${usuario.id}</h3>
-                        <p>Nombre: ${usuario.nombre}</p>
-                        <p>Apellido: ${usuario.apellido}</p>
+                        <p><strong>Nombre:</strong> ${usuario.nombre}</p>
+                        <p><strong>Apellido:</strong> ${usuario.apellido}</p>
                     </div>
                 `);
             } else {
                 $('.usuarios').html('<p>No hay usuarios disponibles.</p>');
             }
         },
-        error: function (xhr, status, error) {
-            console.error('Error en la solicitud:', status, error);
+        error: function () {
+            alert('Error al obtener el usuario');
         }
     });
 });
+
 
     // Mostrar todos los usuarios
     $('.sacarTodos').on('click', function () {
