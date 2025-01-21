@@ -8,7 +8,7 @@ $(document).ready(function () {
     // Mostrar el primer usuario
     $('.mostrarPrimero').on('click', function () {
         $.ajax({
-            url: 'http://localhost:5000/api/usuarios', // URL del endpoint
+            url: 'https:/lanzarapi3.vercel.app/api/usuarios1/', // URL del endpoint
             method: 'GET',
             success: function (usuarios) {
                 if (usuarios.length > 0) {
@@ -33,7 +33,7 @@ $(document).ready(function () {
     // Mostrar todos los usuarios
     $('.sacarTodos').on('click', function () {
         $.ajax({
-            url: 'https://lanzarapi3.vercel.app/api/usuarios/',
+            url: 'https:/lanzarapi3.vercel.app/api/usuarios/',
             method: 'GET',
             success: function (usuarios) {
                 $('.usuarios').html('');
@@ -65,7 +65,7 @@ $(document).ready(function () {
         const apellido = $('#apellido').val();
 
         $.ajax({
-            url: 'https://lanzarapi3.vercel.app/api/crear/',
+            url: 'https:/lanzarapi3.vercel.app/api/crear/',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ nombre, apellido }),
@@ -87,7 +87,7 @@ $(document).ready(function () {
         const userId = $('#usuarioId').val();
 
         $.ajax({
-            url: `https://lanzarapi3.vercel.app/api/usuarios/${userId}`, // URL con el ID especificado
+            url: `https:/lanzarapi3.vercel.app/api/usuarios/${userId}`, // URL con el ID especificado
             method: 'GET',
             success: function (usuario) {
                 if (usuario) {
